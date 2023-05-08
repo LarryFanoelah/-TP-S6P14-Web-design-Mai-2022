@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::middleware(['gzip'])->group(function(){
 Route::get('/', function () {
     return redirect()->route('front_liste');
 })->name("front_index");
@@ -36,3 +37,4 @@ Route::get('/fiche/{id}', [FrontController::class, 'fiche'])->name("front_fiche"
 Route::get('/intelligence-artificiel', [FrontController::class, 'liste'])->name("front_liste");
 Route::post('/recherche', [FrontController::class, 'recherche'])->name("front_recherche");
 Route::get('/{text}', [FrontController::class, 'rech'])->name("front_rech");
+});
